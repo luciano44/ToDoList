@@ -26,7 +26,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>To Do List</Text>
+      <Text style={styles.title}>TO DO LIST</Text>
       <View style={styles.newItemContainer}>
         <TextInput
           value={title}
@@ -121,7 +121,8 @@ const styles = StyleSheet.create({
   },
   title: {
     backgroundColor: "#242C88",
-    color: "#fff",
+    color: "#eadff5",
+    textAlign: "center",
     fontSize: 20,
     padding: 15,
     paddingTop: 50,
