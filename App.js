@@ -48,9 +48,16 @@ export default function App() {
         <Pressable
           style={styles.pressable}
           onPress={() => {
-            setTodos([...todos, { id: todos.length + 1, title, description }]);
-            setTitle("");
-            setDescription("");
+            if (title && description) {
+              setTodos([
+                ...todos,
+                { id: todos.length + 1, title, description },
+              ]);
+              setTitle("");
+              setDescription("");
+            } else {
+              alert("⚠ You must fill all the fields! ");
+            }
           }}
         >
           <Text style={styles.pressableText}>Add Task</Text>
@@ -75,12 +82,16 @@ export default function App() {
           );
         })}
       </ScrollView>
-      {/* <StatusBar style="auto" /> */}
+      <StatusBar backgroundColor="#f9f9f9" />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  container: {
+    backgroundColor: "#f9f9f9",
+    flex: 1,
+  },
   task: {
     backgroundColor: "#fff",
     margin: 5,
@@ -121,9 +132,6 @@ const styles = StyleSheet.create({
     paddingRight: 10,
     width: "100%",
   },
-  container: {
-    flex: 1,
-  },
   NewItemContainer: {
     borderWidth: 1,
     borderColor: "#bbb",
@@ -131,11 +139,20 @@ const styles = StyleSheet.create({
   textinput: {
     backgroundColor: "#fff",
     padding: 10,
-    marginBottom: 2,
+    margin: 4,
+    width: "95%",
+    marginLeft: "auto",
+    marginRight: "auto",
+    borderColor: "#ddd",
+    borderWidth: 1,
   },
   pressable: {
     backgroundColor: "#242C88",
-    width: "100%",
+    width: "80%",
+    marginLeft: "auto",
+    marginRight: "auto",
+    marginTop: 5,
+    borderRadius: 10,
     padding: 10,
   },
   pressableText: {
@@ -144,7 +161,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   tip: {
-    color: "darkgreen",
+    color: "gray",
     backgroundColor: "transparent",
     textAlign: "center",
     padding: 15,
